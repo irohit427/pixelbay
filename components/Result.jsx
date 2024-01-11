@@ -35,8 +35,8 @@ const Result = ({ images }) => {
                   <DownloadSelection image={image} />
                 </div>
                 <p className='text-2xl font-semibold py-1'>Information</p>
-                <div className='grid grid-cols-3 gap-4 text-center'>
-                  <Info label='User' value={image?.user} />
+                <div className='grid grid-cols-3 gap-3'>
+                  <Info label='User' value={image?.user}  />
                   <Info label='UserID' value={image?.user_id} />
                   <Info label='Type' value={image?.type} />  
                   <Info label='Views' value={image?.views} />
