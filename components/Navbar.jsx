@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
-import { auth, UserButton } from "@clerk/nextjs";
+import { UserButton, SignedIn, SignedOut } from "@clerk/nextjs";
 import { Permanent_Marker } from 'next/font/google';
 import { cn } from '@/lib/utils';
 
@@ -11,9 +11,6 @@ const marker = Permanent_Marker({
 })
 
 const Navbar = () => {
-
-  const { userId } = auth();
-
   return (
     <div className="border-b">
       <div className="flex h-16 justify-between flex-row items-center px-24">
@@ -23,15 +20,15 @@ const Navbar = () => {
           </Link>
         </div>
         <div>
-          {
-            !userId && 
+          <SignedOut>
             <Link href='/sign-in'>
               Login
             </Link>
-          }
-          {
-            userId && <UserButton afterSignOutUrl="/" />
-          }
+          </SignedOut>
+          <SignedIn>
+            <UserButton afterSignOutUrl="/" />
+          </SignedIn>
+          
         </div>
       </div>
     </div>
