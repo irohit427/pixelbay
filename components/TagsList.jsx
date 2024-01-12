@@ -3,21 +3,21 @@ import Link from 'next/link';
 
 const TagsList = ({ images }) => {
   let tags = [];
-  images.map((image) => {
+  images?.map((image) => {
     if (images.length === 1) {
-      tags = image.tags.split(',');
+      tags = image?.tags.split(',');
     } else {
       tags.push(image.tags.split(',')[0]);
     }
   });
 
-  tags = tags.slice(0, 12);
+  tags = tags?.slice(0, 12);
 
   return (
     <div>
       <div className='flex flex-row gap-2 mx-2 overflow-x-auto items-center pt-2 pb-6'>
         {
-          tags.map((tag, index) => (
+          tags?.map((tag, index) => (
             <Link href={`/search/${tag}`} key={index}>
             <div 
               className='bg-gray-100 text-xs 

@@ -1,21 +1,26 @@
 'use client';
 
 import React, { useState } from 'react'
-import Image from 'next/image';
 import Link from 'next/link';
 import { Dialog, DialogContent } from './ui/dialog';
 import { AspectRatio } from './ui/aspect-ratio';
 import Info from './Info';
 import DownloadSelection from './DownloadSelection';
 import TagsList from './TagsList';
+import ImageCard from './ImageCard';
 
 const Result = ({ images }) => {
   const [open, setOpen] = useState(false);
   const [image, setImage] = useState(null);
 
+  const openModal = (image) => {
+    setOpen(true);
+    setImage(image);
+  }
+
   return (
-    <div className='grid grid-cols-12 w-full pb-48'>
-      <Dialog open={open} onOpenChange={setOpen}>
+    <React.Fragment>
+      <Dialog open={open} onOpenChange={setOpen} className='dark:bg-black'>
         <DialogContent className="max-w-[80vw] max-h-[80vh] overflow-y-auto overflow-x-hidden">
           <div className='flex flex-col lg:flex-row'>
             <div className='max-h-[75vh] min-w-[70%]'>
@@ -48,7 +53,14 @@ const Result = ({ images }) => {
           </div>
         </DialogContent>
       </Dialog>
-      {images?.map((image) => {
+      <section className='px-1 my-2 grid grid-cols-gallery auto-rows-[10px]'>
+        {images?.map((image, index) => (
+          <React.Fragment key={index}>
+            <ImageCard image={image} onClick={openModal}/>
+          </React.Fragment>
+        ))}
+      </section>
+      {/* {images?.map((image) => {
         return (
           <div key={image.id} onClick={() => {
             setOpen(true); 
@@ -83,8 +95,8 @@ const Result = ({ images }) => {
               </div>
           </div>
         )}
-      )}
-    </div>
+      )} */}
+    </React.Fragment>
   )
 }
 
