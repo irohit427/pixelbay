@@ -70,7 +70,7 @@ const Result = ({ images }) => {
                 transition-all duration-300 ease-in-out"
               >
                 <div className='absolute top-[80%] pl-6 h-full capitalize text-white text-sm pt-4'>
-                  <div className='flex flex-row gap-3'>
+                  <div className='flex flex-row gap-3 flex-wrap'>
                   {image.tags.split(', ').map((tag, index) => 
                     <React.Fragment key={index}>
                       <Link href={`/search/${tag}`}>
