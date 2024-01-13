@@ -14,7 +14,7 @@ const Filter = ({ images }) => {
   return (
     <div className='h-16 flex lg:flex-row flex-col items-center align-middle justify-center'>
       <div className='w-[80%] lg:w-[70%] xl:w-[80%] h-10'>
-        <TagsList images={images?.hits} />
+        <TagsList images={images?.hits} className='dark:border-gray-50 dark:text-white' />
       </div>
       <Separator orientation="vertical" className='mx-2 h-10' />
       <div className='lg:w-[15%] w-full h-10 items-center justify-self-center'>

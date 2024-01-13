@@ -15,13 +15,14 @@ const SearchPage = async ({ params }) => {
           <Searchbar />
         </div>
         <div>
-          <p className='text-4xl capitalize font-bold pb-2 text-zinc-900'>
+          <p className='text-4xl capitalize font-bold pb-2 text-zinc-900 dark:text-zinc-100'>
             Showing Result for {decodeURIComponent(query)}
           </p>
           <sapn className='text-sm text-zinc-400'>Find the best {decodeURIComponent(query)} pictures and images by browsing through our incredible photo library. All these images are high-resolution and ready to download!</sapn>
         </div>
       </div>
       <Result images={images?.hits}/>
+      
     </div>
   )
 }

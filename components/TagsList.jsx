@@ -1,10 +1,15 @@
 import React from 'react'
 import Link from 'next/link';
+import { cn } from '@/lib/utils';
 
-const TagsList = ({ images }) => {
+const TagsList = ({ images, className }) => {
   let tags = [];
   images?.map((image) => {
-    tags.push(image.tags.split(',')[0]);
+    if (images.length === 1) {
+      tags = image.tags.split(',');
+    } else {
+      tags.push(image.tags.split(',')[0]);
+    }
   });
 
   tags = tags?.slice(0, 12);
@@ -16,10 +21,8 @@ const TagsList = ({ images }) => {
           tags?.map((tag, index) => (
             <Link href={`/search/${tag}`} key={index}>
             <div 
-              className='text-xs 
-                font-light border dark:border-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800 px-4 text-nowrap 
-                hover:bg-slate-200 hover:font-semibold
-                border-md py-2 rounded-md text-gray-700'
+              className={cn(className, `text-xs font-light border  px-4 text-nowrap 
+                hover:font-semiboldborder-md py-2 rounded-md text-gray-700`)}
             >
               <p className='text-sm capitalize'>
                 {tag}
