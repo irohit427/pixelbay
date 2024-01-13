@@ -28,7 +28,7 @@ const Searchbar = () => {
         <Input
           onChange={(e) => setValue(e.target.value)}
           value={value}
-          className="w-[200px] text-stone-800 font-light md:w-[320px] lg:w-[540px] h-8 md:h-10 lg:h-12 pl-9 rounded-full bg-slate-100 focus:ring-0 border-0 focus:shadow-2xl  focus-visible:ring-offset-0 focus-visible:ring-0"
+          className="w-[200px] text-stone-800 font-light md:w-[320px] lg:w-[540px] h-8 md:h-10 lg:h-12 pl-9 rounded-full bg-slate-100 focus:ring-0 border-0 focus:shadow-2xl focus-visible:ring-offset-0 focus-visible:ring-0"
           placeholder="Search images..."
           onKeyDown={(e) => {
             e.keyCode === 13 && fetchImages();

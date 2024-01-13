@@ -14,7 +14,7 @@ const marker = Permanent_Marker({
 
 const Navbar = () => {
   return (
-    <div className="border-b">
+    <div className="shadow-sm">
       <div className="flex h-16 justify-between flex-row items-center px-24">
         <div>
           <Link href="/">

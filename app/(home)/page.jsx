@@ -1,13 +1,15 @@
 import React from 'react'
 import Banner from './components/Banner'
-import TagsList from '@/components/TagsList';
 import Result from '@/components/Result';
-import { fetchImages, fetchTags } from '@/actions/getImages';
+import { fetchImages } from '@/actions/getImages';
+import Filter from '@/components/Filter';
+import { Button } from '@/components/ui/button';
 
 
 
 const Home = async () => {
-  const URL = `https://pixabay.com/api/?key=${process.env.PIXABAY_KEY}&image_type=photo&pretty=true`;
+  const filter = 'editors_choice=true';
+  const URL = `https://pixabay.com/api/?key=${process.env.PIXABAY_KEY}&image_type=photo&pretty=true&${filter}`;
 
   const getRandomNumber = () => {
     const randomDecimal = Math.random();
@@ -21,8 +23,13 @@ const Home = async () => {
   return (
     <div>
       <Banner image={images?.hits[getRandomNumber()]} />
-      <TagsList images={images?.hits} />
+      <Filter images={images} />
       <Result images={images?.hits} />
+      <div className='w-full flex flex-row justify-center pt-5 pb-10'>
+        <div>
+          <Button className='rounded-full font-light'>Load More</Button>
+        </div>
+      </div>
     </div>
   )
 }

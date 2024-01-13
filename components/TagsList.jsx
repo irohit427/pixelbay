@@ -4,26 +4,22 @@ import Link from 'next/link';
 const TagsList = ({ images }) => {
   let tags = [];
   images?.map((image) => {
-    if (images.length === 1) {
-      tags = image?.tags.split(',');
-    } else {
-      tags.push(image.tags.split(',')[0]);
-    }
+    tags.push(image.tags.split(',')[0]);
   });
 
   tags = tags?.slice(0, 12);
 
   return (
     <div>
-      <div className='flex flex-row gap-2 mx-2 overflow-x-auto items-center pt-2 pb-6'>
+      <div className='flex flex-row gap-2 items-center overflow-clip'>
         {
           tags?.map((tag, index) => (
             <Link href={`/search/${tag}`} key={index}>
             <div 
-              className='bg-gray-100 text-xs 
-                font-medium me-2 px-4 text-nowrap 
-                border-md
-                py-3 rounded text-black'
+              className='text-xs 
+                font-light border dark:border-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800 px-4 text-nowrap 
+                hover:bg-slate-200 hover:font-semibold
+                border-md py-2 rounded-md text-gray-700'
             >
               <p className='text-sm capitalize'>
                 {tag}
